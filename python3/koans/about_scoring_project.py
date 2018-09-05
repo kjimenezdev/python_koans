@@ -34,7 +34,28 @@ from runner.koan import *
 
 def score(dice):
     # You need to write this method
-    pass
+    if not dice:
+        return 0
+    else:
+        val = 0
+        dicty = {}.fromkeys(range(1,7), 0)
+        three_5, three_1 = False, False
+        # print (dicty)
+        for value in dice:
+            # print (value)
+            dicty[value] = dicty[value] + 1
+            if dicty[value] == 3 :
+                if value == 1:
+                    val = val + 700
+                else:
+                    val = val + (value * 100)
+                    if value == 5:
+                        val = val - 150
+            if value == 1:
+                val = val + 100
+            elif value == 5:
+                val = val +  50
+        return val
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
